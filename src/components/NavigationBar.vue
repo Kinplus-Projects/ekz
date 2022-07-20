@@ -1,7 +1,8 @@
 <template>
-  <v-row>
-    <v-toolbar-title>Logo</v-toolbar-title>
-
+  <v-row pb-2>
+    <v-card flat color="transparent" max-width="4rem" max-height="4rem">
+      <v-img src="imgs/logo.png" contain></v-img>
+    </v-card>
     <v-spacer></v-spacer>
 
     <div class="d-flex align-center">
@@ -13,7 +14,14 @@
         ></router-link
       >
 
-      <v-btn color="secondary" large class="black--text">Register</v-btn>
+      <router-link
+        :to="{ name: 'register' }"
+        class="white--text text-decoration-none"
+      >
+        <v-btn color="secondary" large class="black--text"
+          >Register</v-btn
+        ></router-link
+      >
     </div>
   </v-row>
 </template>

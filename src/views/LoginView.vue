@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row class="fill-height mt-4" align="center" justify="center">
+    <v-row class="fill-height" align="center" justify="center">
       <v-col cols="12" sm="6" order="2">
         <div>
           <v-card flat max-width="24rem" class="mx-auto">
@@ -8,11 +8,9 @@
 
             <v-form class="mt-4">
               <v-text-field
-                rounded
+                filled
                 prepend-inner-icon="mdi-account-circle"
                 color="success"
-                outlined
-                dense
               >
                 <template #label>
                   <i>Username <span class="error--text">*</span> </i>
@@ -20,11 +18,9 @@
               </v-text-field>
 
               <v-text-field
-                rounded
                 prepend-inner-icon="mdi-lock"
-                outlined
+                filled
                 color="success"
-                dense
                 :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                 :type="showPassword ? 'text' : 'password'"
                 @click:append="showPassword = !showPassword"
@@ -34,15 +30,24 @@
                 </template>
               </v-text-field>
 
-              <div class="d-flex justify-space-between align-center">
-                <v-checkbox label="Remember Me" color="black"></v-checkbox>
-                <span class="black--text">Forgot Password?</span>
-              </div>
-              <v-row justify="center" class="mt-3">
-                <v-btn color="warning" block class="mb-6 black--text">
-                  Login
-                </v-btn>
+              <v-row class="d-flex justify-space-between align-center">
+                <v-col cols="12" md="6">
+                  <v-checkbox label="Remember Me" color="black"></v-checkbox>
+                </v-col>
+                <v-col cols="12" md="6">
+                  <span class="black--text">Forgot Password?</span>
+                </v-col>
               </v-row>
+              <div justify="center" class="mt-3">
+                <router-link
+                  :to="{ name: 'userprofile' }"
+                  class="white--text text-decoration-none"
+                >
+                  <v-btn color="warning" block class="mb-6 black--text">
+                    Login
+                  </v-btn></router-link
+                >
+              </div>
             </v-form>
           </v-card>
         </div>

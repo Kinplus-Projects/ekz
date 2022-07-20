@@ -1,9 +1,9 @@
 <template>
-  <v-app>
-    <v-app-bar app color="primary" elevate-on-scroll>
+  <v-app app>
+    <v-app-bar height="100rem" app color="primary" elevate-on-scroll>
       <NavigationBar class="container" />
     </v-app-bar>
-    <v-main class="py-10">
+    <v-main>
       <router-view></router-view>
     </v-main>
 
@@ -36,9 +36,9 @@ export default {
 * {
   word-wrap: break-word;
 }
-/* body {
+body {
   max-height: 100vh;
-} */
+}
 
 .line-height {
   line-height: 1;

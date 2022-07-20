@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row class="fill-height mt-4" align="center">
+    <v-row class="fill-height" align="center">
       <v-col cols="12" sm="6" order="2">
         <div>
           <h1 class="line-height">
