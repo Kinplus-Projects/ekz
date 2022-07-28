@@ -1,42 +1,84 @@
 <template>
-  <v-container>
-    <v-row class="fill-height" align="center">
-      <v-col cols="12" sm="6" order="2">
-        <div>
-          <h1 class="line-height">
-            <span class="success--text">Supporting</span>
-            <br />
-            <em class="error--text text-h1 font-weight-bold">Startups</em>
-            <br />
-            <span class="success--text">in Ekiti State</span>
-          </h1>
-          <p class="mt-4">
-            This is the official website of the
-            <strong>Ekiti State Government Startup Database.</strong> Kindly
-            ensure to register your business or company on this site for
-            documentation and other beneficial purposes.
-          </p>
+  <div class="homeView">
+     <div app class="nav">
+       <NavigationBar  />
+    </div>
 
-          <v-btn color="secondary" large class="black--text mt-4"
-            >Register</v-btn
-          >
+    <div class="main">
+      <router-view></router-view>
+    </div>
+
+    <v-footer class="foot" color="primary">
+      <v-row class="mx-2" >
+        <div class="white--text">
+          <v-icon color="white" class="mr-2">mdi-phone</v-icon>
+          <span>+234815467890</span>
         </div>
-      </v-col>
-      <v-col cols="12" sm="6" order="1" order-sm="2">
-        <v-card height="100%">
-          <v-img
-            height="100%"
-            position="center"
-            cover
-            src="imgs/hero.jpg"
-            alt="hero image"
-          ></v-img>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+        <v-spacer></v-spacer>
+        <div class="white--text d-flex justify-end align-center ">
+          &copy; copyright {{ new Date().getFullYear() }}
+          <span>EKDATA</span>
+        </div>
+      </v-row>
+    </v-footer>
+
+  </div>
 </template>
 
 <script>
-export default {};
+import NavigationBar from '@/components/NavigationBar.vue';
+export default {
+  name: "HomeView",
+  components:{
+    NavigationBar
+  }
+
+}
 </script>
+
+<style lang="scss" scoped>
+
+.homeView{
+  height: 100vh;
+}
+
+
+
+
+.line-height {
+  line-height: 1;
+}
+
+.main{
+  height: 82vh;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.main::-webkit-scrollbar {
+    width: 16px;
+    background-color: green;
+  outline: 1px solid rgb(0, 0, 0);
+}
+
+.foot{
+  height: 8vh;
+}
+.nav{
+  height: 10vh !important;
+  background-color: green !important;
+
+}
+.container{
+  width: 100% !important;
+}
+
+
+@media (max-width:900px) {
+  .main::-webkit-scrollbar {
+   display: none;
+}
+  
+}
+
+</style>

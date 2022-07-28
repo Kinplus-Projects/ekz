@@ -1,61 +1,38 @@
 <template>
-  <div class="grey lighten-5 pt-10">
-    <v-row class="pl-md=16 pl-sm-6 pl-0 mx-auto">
-      <v-col cols="12" sm="auto">
-        <v-avatar class="profile" color="grey" size="250">
-          <v-img lazy-src=""> </v-img>
-        </v-avatar>
-      </v-col>
-      <v-col cols="12" sm="auto" align-self="center">
-        <div>
-          <h3>{{ company.TitleName }}</h3>
-          <p>{{ company.Email }}</p>
-          <v-btn color="success"> Edit Profile </v-btn>
+  <div class="main">
+    <div class="nav">
+      <dashboardNav/>
+    </div>
+      <div class="content-wrap">
+        <div class="side"> 
+          <sideNav/>
         </div>
-      </v-col>
-      <v-tabs color="deep-purple accent-4" right>
-        <v-tab>Landscape</v-tab>
-        <v-tab>City</v-tab>
-        <v-tab>Abstract</v-tab>
 
-        <v-tab-item v-for="n in 3" :key="n">
-          <v-container fluid>
-            <v-row>
-              <v-col v-for="i in 6" :key="i" cols="12" md="4">
-                <v-img
-                  :src="`https://picsum.photos/500/300?image=${i * n * 5 + 10}`"
-                  :lazy-src="`https://picsum.photos/10/6?image=${
-                    i * n * 5 + 10
-                  }`"
-                  aspect-ratio="1"
-                ></v-img>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-tab-item>
-      </v-tabs>
-      <!-- <div class="pl-md-16 pl-sm-5 d-flex align-center">
-        <div>
-          
+        <div class="content-main">
+          <Dashboard/>
+
         </div>
-        
-      </div> -->
-    </v-row>
 
-    <v-container>
-      <router-view></router-view>
-    </v-container>
+      </div>
+ 
+   
+
   </div>
+
 </template>
 
 <script>
-// import Name from '@/components/Name.vue';
+import dashboardNav from '@/components/dashboardNav.vue';
+import Dashboard from '@/components/Dashboard/index.vue';
+import sideNav from '@/components/sideNav.vue';
 
 export default {
+  name: "ProfileView",
   components: {
-    // Name
-  },
-
+    dashboardNav,
+    Dashboard,
+    sideNav
+},
   data() {
     return {
       company: {
@@ -67,4 +44,76 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+.main{
+  height: 100vh !important;
+  position: relative;
+}
+
+
+.content-wrap{
+  height: 90vh;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+
+}
+
+.side{
+  height: 100% !important;
+  width: 20vw;
+  border-left: 1px solid black;
+  // overflow: hidden;
+  z-index: 11111;
+  
+}
+
+.content-main{
+  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+  width: 80vw;
+}
+
+.nav{
+ margin-top:8px !important;
+}
+
+
+// .buttomNav{
+//   position: absolute;
+//   bottom: 0;
+//   left: 0;
+//   width: 100%;
+// }
+@media (max-width:900px) {
+
+  .mobie {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .mobie div {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .content-main{
+  height: 100%;
+  overflow-y: scroll;
+  width: auto !important;
+  
+}
+
+.side{
+  display: none;
+}
+
+}
+</style>

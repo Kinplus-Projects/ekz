@@ -1,6 +1,6 @@
 <template>
-  <v-container>
-    <v-row class="fill-height" align="center" justify="center">
+  <v-container align="center" justify="center" class="mt-6">
+    <v-row class="fill-height"  align="center" justify="center">
       <v-col cols="12" sm="6" order="2">
         <div>
           <v-card flat max-width="24rem" class="mx-auto">
@@ -8,16 +8,19 @@
 
             <v-form class="mt-4">
               <v-text-field
+              v-model="email"
                 filled
                 prepend-inner-icon="mdi-account-circle"
                 color="success"
+                type="email"
               >
                 <template #label>
-                  <i>Username <span class="error--text">*</span> </i>
+                  <i>Email <span class="error--text">*</span> </i>
                 </template>
               </v-text-field>
 
               <v-text-field
+              v-model="password"
                 prepend-inner-icon="mdi-lock"
                 filled
                 color="success"
@@ -39,40 +42,47 @@
                 </v-col>
               </v-row>
               <div justify="center" class="mt-3">
-                <router-link
-                  :to="{ name: 'userprofile' }"
-                  class="white--text text-decoration-none"
-                >
-                  <v-btn color="warning" block class="mb-6 black--text">
+                
+                  <v-btn @click="Login" color="warning" block class="mb-6 black--text">
                     Login
-                  </v-btn></router-link
-                >
+                  </v-btn>
               </div>
             </v-form>
           </v-card>
         </div>
       </v-col>
-      <v-col cols="12" sm="6" order="1" order-sm="2">
-        <v-card height="100%">
-          <v-img
-            height="100%"
-            position="center"
-            cover
-            src="imgs/img1.jpg"
-            alt="hero image"
-          ></v-img>
-        </v-card>
+      <v-col cols="12" sm="6" order="1" order-sm="2" height="600">
+         <MainSlide/>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import {login} from '@/Auth/index'
+import MainSlide from '@/components/MainSlide.vue';
 export default {
+  components:{
+    MainSlide,
+   
+},
   data() {
     return {
       showPassword: false,
+      email: '',
+      password: null
     };
   },
+
+  methods:{
+    async Login(){
+      const res = await login.start(this.email, this.password)
+      if(res){
+        console.log(res)
+        this.$router.push({path: "/dashboard"}) 
+      }
+    }
+  }
+
 };
 </script>
