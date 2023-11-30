@@ -1,4 +1,4 @@
-# ek-data
+# Ekiti Knowledge zone
 
 ## Project setup
 ```
